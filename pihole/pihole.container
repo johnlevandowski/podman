@@ -1,0 +1,53 @@
+# FileName=pihole.container
+[Unit]
+Description=Pihole DNS Container
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=ghcr.io/pi-hole/pihole:2026.07.2
+HostName=pihole
+
+# When using pihole as dhcp server
+# Use host network
+# Use NET_ADMIN capability
+# Don't publish ports
+# Update FTLCONF_dns_upstreams below to 127.0.0.1#5335
+# Network=host
+# AddCapability=NET_ADMIN
+PublishPort=8080:8080
+PublishPort=53:53
+PublishPort=53:53/udp
+
+Environment=TZ=US/Mountain
+Environment=FTLCONF_dhcp_start=192.168.0.201
+Environment=FTLCONF_dhcp_end=192.168.0.254
+Environment=FTLCONF_dhcp_router=192.168.0.1
+Environment=FTLCONF_dhcp_leaseTime=24h
+Environment=FTLCONF_dns_domain_name=lan.johnl.dev
+Environment=FTLCONF_dns_domainNeeded=true
+Environment=FTLCONF_dns_expandHosts=true
+Environment=FTLCONF_dns_piholePTR=HOSTNAMEFQDN
+Environment=FTLCONF_dns_queryLogging=false
+Environment=FTLCONF_dns_specialDomains_iCloudPrivateRelay=false
+Environment=FTLCONF_dns_upstreams=host.containers.internal#5335
+Environment=FTLCONF_misc_etc_dnsmasq_d=true
+Environment=FTLCONF_ntp_ipv4_active=false
+Environment=FTLCONF_ntp_ipv6_active=false
+Environment=FTLCONF_ntp_sync_active=false
+# Environment=FTLCONF_webserver_api_password=webserver_api_password
+Environment=FTLCONF_webserver_domain=pihole.macbook.lan.johnl.dev
+Environment=FTLCONF_webserver_port=8080
+Environment=FTLCONF_webserver_session_timeout=2592000
+
+Volume=/home/john-podman/pihole/etc-dnsmasq.d:/etc/dnsmasq.d:z
+Volume=etc-pihole:/etc/pihole:z
+Volume=var-log-pihole:/var/log/pihole:z
+
+Secret=PIHOLE_WEBSERVER_API_PASSWORD,type=env,target=FTLCONF_webserver_api_password
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

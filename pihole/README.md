@@ -1,0 +1,43 @@
+Pihole
+======
+
+## Disable systemd-resolved stub listener if installed/active
+
+```
+sudo mkdir /etc/systemd/resolved.conf.d
+sudo cp $HOME/Documents/GitHub/podman/99-stub-listener.conf /etc/systemd/resolved.conf.d/
+sudo systemctl restart systemd-resolved.service
+```
+
+
+## Firewall
+
+```
+sudo firewall-cmd --permanent --add-service=dns
+sudo firewall-cmd --reload
+```
+
+
+## Run as rootless podman user
+
+```
+sudo machinectl shell john-podman@
+```
+
+
+## Pihole webserver api passwored
+
+```
+printf "PIHOLE_WEBSERVER_API_PASSWORD" | podman secret create PIHOLE_WEBSERVER_API_PASSWORD -
+```
+
+
+## Copy quadlet configuration
+
+```
+mkdir -p $HOME/pihole/
+cp -r $HOME/Documents/GitHub/podman/pihole/. $HOME/pihole/
+cp $HOME/Documents/GitHub/podman/pihole/pihole.container $HOME/.config/containers/systemd/
+systemctl --user daemon-reload
+systemctl --user start pihole.service
+```
