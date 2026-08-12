@@ -34,6 +34,8 @@ printf "PIHOLE_WEBSERVER_API_PASSWORD" | podman secret create PIHOLE_WEBSERVER_A
 
 ## Copy quadlet configuration
 
+Update FTLCONF_webserver_domain environment variable in pihole.container  
+
 ```
 mkdir -p $HOME/pihole/
 cp -r $HOME/Documents/GitHub/podman/pihole/. $HOME/pihole/

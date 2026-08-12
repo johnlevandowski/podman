@@ -26,6 +26,8 @@ printf "CLOUDFLARE_API_TOKEN" | podman secret create CLOUDFLARE_API_TOKEN -
 
 ## Copy quadlet configuration
 
+Update LANDOMAIN and TSDOMAIN environment variables in caddy.container  
+
 ```
 mkdir -p $HOME/caddy/
 cp -r $HOME/Documents/GitHub/podman/caddy/. $HOME/caddy/
