@@ -4,7 +4,7 @@ Pihole
 ## Increase buffer sizes for unbound so-rcvbuf and so-sndbuf
 
 ```
-sudo cp $HOME/Documents/GitHub/podman/80-unbound.conf /etc/sysctl.d/
+sudo cp $HOME/Documents/GitHub/podman/pihole/80-unbound.conf /etc/sysctl.d/
 sudo sysctl --system
 ```
 
@@ -13,7 +13,7 @@ sudo sysctl --system
 
 ```
 sudo mkdir /etc/systemd/resolved.conf.d
-sudo cp $HOME/Documents/GitHub/podman/99-stub-listener.conf /etc/systemd/resolved.conf.d/
+sudo cp $HOME/Documents/GitHub/podman/pihole/99-stub-listener.conf /etc/systemd/resolved.conf.d/
 sudo systemctl restart systemd-resolved.service
 ```
 
