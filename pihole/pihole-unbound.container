@@ -1,4 +1,4 @@
-# FileName=unbound.container
+# FileName=pihole-unbound.container
 [Unit]
 Description=Unbound DNS Container
 # After=network-online.target
@@ -19,7 +19,7 @@ Image=ghcr.io/johnlevandowski/unbound:3.24.1-1.25.2-r0
 # HealthStartPeriod=10s
 # HealthTimeout=30s
 
-# Volume=/home/john-podman/unbound/etc-unbound:/etc/unbound/unbound.conf.d/
+# Volume=/home/john-podman/unbound/etc-unbound:/etc/unbound/unbound.conf.d:z
 
 [Service]
 Restart=always
