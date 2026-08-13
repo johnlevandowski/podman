@@ -1,0 +1,13 @@
+# FileName=pihole.pod
+[Unit]
+Description=Pi-hole Pod
+
+[Pod]
+PodName=pihole-pod
+Network=pasta:--ipv4-only
+PublishPort=8080:8080
+PublishPort=53:53
+PublishPort=53:53/udp
+
+[Install]
+WantedBy=default.target

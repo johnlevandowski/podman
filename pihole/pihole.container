@@ -1,12 +1,13 @@
 # FileName=pihole.container
 [Unit]
 Description=Pihole DNS Container
-After=network-online.target
-Wants=network-online.target
+# After=network-online.target
+# Wants=network-online.target
 
 [Container]
+Pod=pihole.pod
 Image=ghcr.io/pi-hole/pihole:2026.07.2
-HostName=pihole
+# HostName=pihole
 
 # When using pihole as dhcp server
 # Use host network
@@ -15,9 +16,9 @@ HostName=pihole
 # Update FTLCONF_dns_upstreams below to 127.0.0.1#5335
 # Network=host
 # AddCapability=NET_ADMIN
-PublishPort=8080:8080
-PublishPort=53:53
-PublishPort=53:53/udp
+# PublishPort=8080:8080
+# PublishPort=53:53
+# PublishPort=53:53/udp
 
 Environment=TZ=US/Mountain
 Environment=FTLCONF_dhcp_start=192.168.0.201
@@ -30,7 +31,8 @@ Environment=FTLCONF_dns_expandHosts=true
 Environment=FTLCONF_dns_piholePTR=HOSTNAMEFQDN
 Environment=FTLCONF_dns_queryLogging=false
 Environment=FTLCONF_dns_specialDomains_iCloudPrivateRelay=false
-Environment=FTLCONF_dns_upstreams=host.containers.internal#5335
+# Environment=FTLCONF_dns_upstreams=host.containers.internal#5335
+Environment=FTLCONF_dns_upstreams=127.0.0.1#5335
 Environment=FTLCONF_misc_etc_dnsmasq_d=true
 Environment=FTLCONF_ntp_ipv4_active=false
 Environment=FTLCONF_ntp_ipv6_active=false
