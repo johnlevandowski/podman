@@ -1,6 +1,14 @@
 Pihole
 ======
 
+## Increase buffer sizes for unbound so-rcvbuf and so-sndbuf
+
+```
+sudo cp $HOME/Documents/GitHub/podman/80-unbound.conf /etc/sysctl.d/
+sudo sysctl --system
+```
+
+
 ## Disable systemd-resolved stub listener if installed/active
 
 ```
