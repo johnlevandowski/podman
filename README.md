@@ -1,11 +1,7 @@
 Podman
 ======
 
-```
-git clone https://github.com/johnlevandowski/podman $HOME/Documents/GitHub/podman
-```
-
-## Packages
+## Packages (apt uses the same package names)
 
 ```
 sudo dnf install \
@@ -18,7 +14,7 @@ systemd-container
 ## Rootless privileged port permissions
 
 ```
-sudo cp $HOME/Documents/GitHub/podman/99-ip-unpriv-port.conf /etc/sysctl.d/
+echo 'net.ipv4.ip_unprivileged_port_start=53' | sudo tee -a /etc/sysctl.d/99-ip-unpriv-port.conf > /dev/null
 sudo sysctl --system
 ```
 

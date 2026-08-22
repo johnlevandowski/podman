@@ -1,0 +1,10 @@
+# FileName=immich.pod
+[Unit]
+Description=Immich Pod
+
+[Pod]
+PodName=immich-pod
+PublishPort=2283:2283/tcp
+
+[Install]
+WantedBy=default.target

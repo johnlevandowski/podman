@@ -1,0 +1,24 @@
+# FileName=immich-database
+[Unit]
+Description=Immich database
+
+[Container]
+Pod=immich.pod
+Image=ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+
+Environment=POSTGRES_USER=postgres
+Environment=POSTGRES_DB=immich
+Environment=POSTGRES_INITDB_ARGS=--data-checksums
+Environment=POSTGRES_PASSWORD_FILE=/run/secrets/DB_PASSWORD
+ShmSize=128mb
+
+Volume=immich-postgres:/var/lib/postgresql/data:z
+
+# Secret=PIHOLE_WEBSERVER_API_PASSWORD,type=env,target=POSTGRES_PASSWORD
+Secret=DB_PASSWORD
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

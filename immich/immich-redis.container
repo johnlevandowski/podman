@@ -1,0 +1,16 @@
+# FileName=immich-redis
+[Unit]
+Description=Immich redis
+
+[Container]
+Pod=immich.pod
+Image=docker.io/valkey/valkey:9
+Exec=redis-server --loglevel warning
+
+# HealthCmd=redis-cli ping || exit 1
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

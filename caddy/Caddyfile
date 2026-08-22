@@ -14,6 +14,11 @@
 		reverse_proxy http://host.containers.internal:9090
 	}
 
+	@immich host immich.{$LANDOMAIN} immich.{$TSDOMAIN}
+	handle @immich {
+		reverse_proxy http://host.containers.internal:2283
+	}
+
 	@pihole host pihole.{$LANDOMAIN} pihole.{$TSDOMAIN}
 	handle @pihole {
 		redir / /admin{uri}
