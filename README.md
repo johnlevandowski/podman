@@ -6,7 +6,6 @@ Podman
 ```
 sudo dnf install \
 podman \
-podman-compose \
 systemd-container
 ```
 
@@ -51,4 +50,12 @@ podman image rm hello
 
 ```
 podman run --rm -v ./compose.yaml:/compose.yaml:Z ghcr.io/containers/podlet compose /compose.yaml
+```
+
+
+## ARCH LINUX ONLY
+
+```
+sudo machinectl shell john-podman@
+systemctl --user mask podman-user-wait-network-online.service
 ```
