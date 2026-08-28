@@ -1,17 +1,12 @@
 # FileName=pihole-unbound.container
 [Unit]
 Description=Unbound DNS Container
-# After=network-online.target
-# Wants=network-online.target
 
 [Container]
 Pod=pihole.pod
 Image=ghcr.io/johnlevandowski/unbound:3.24.1-1.25.2-r0
-# HostName=unbound
-
-# Network=pasta:--ipv4-only
-# PublishPort=5335:5335/tcp
-# PublishPort=5335:5335/udp
+ReadOnly=true
+Mount=type=tmpfs,destination=/etc/unbound,tmpfs-size=100M,tmpcopyup,tmpfs-mode=0755,U=true
 
 # HealthCmd=dig -p 5335 @127.0.0.1 www.google.com +short || exit 1
 # HealthInterval=30s
@@ -19,7 +14,7 @@ Image=ghcr.io/johnlevandowski/unbound:3.24.1-1.25.2-r0
 # HealthStartPeriod=10s
 # HealthTimeout=30s
 
-# Volume=/home/john-podman/unbound/etc-unbound:/etc/unbound/unbound.conf.d:z
+# Volume=%h/unbound/etc-unbound:/etc/unbound/unbound.conf.d
 
 [Service]
 Restart=always

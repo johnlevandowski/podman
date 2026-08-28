@@ -49,8 +49,7 @@ mkdir -p $HOME/pihole/
 cp -r $HOME/Documents/GitHub/podman/pihole/. $HOME/pihole/
 cp $HOME/Documents/GitHub/podman/pihole/pihole.pod $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole.container $HOME/.config/containers/systemd/
-cp $HOME/Documents/GitHub/podman/pihole/unbound.container $HOME/.config/containers/systemd/
+cp $HOME/Documents/GitHub/podman/pihole/pihole-unbound.container $HOME/.config/containers/systemd/
 systemctl --user daemon-reload
-# systemctl --user start pihole.service
 systemctl --user start pihole-pod.service
 ```
