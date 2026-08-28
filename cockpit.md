@@ -29,7 +29,7 @@ sudo micro /etc/cockpit/cockpit.conf
 ```
 [WebService]
 AllowUnencrypted = true
-Origins = https://cockpit.macbook.lan.johnl.dev wss://cockpit.macbook.lan.johnl.dev
+Origins = https://cockpit.geekoma5.lan.johnl.dev wss://cockpit.geekoma5.lan.johnl.dev
 ProtocolHeader = X-Forwarded-Proto
 ```
 

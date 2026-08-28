@@ -8,15 +8,14 @@ Wants=network-online.target
 Image=ghcr.io/johnlevandowski/caddy-cloudflare:2.11.4
 HostName=caddy
 ReadOnly=true
-ReadOnlyTmpfs=true
 
 PublishPort=80:80/tcp
 PublishPort=443:443/tcp
 PublishPort=443:443/udp
 
 Environment=ACME_AGREE=true
-Environment=LANDOMAIN=macbook.lan.johnl.dev
-Environment=TSDOMAIN=macbook.ts.johnl.dev
+Environment=LANDOMAIN=geekoma5.lan.johnl.dev
+Environment=TSDOMAIN=geekoma5.ts.johnl.dev
 
 Volume=%h/caddy/site/:/srv:z
 Volume=%h/caddy/Caddyfile:/etc/caddy/Caddyfile:z
