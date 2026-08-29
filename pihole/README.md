@@ -5,7 +5,9 @@ Pihole
 
 ```
 sysctl net.core.rmem_max net.core.wmem_max
-sudo cp $HOME/Documents/GitHub/podman/pihole/80-unbound.conf /etc/sysctl.d/
+SYSCTLCONF="/etc/sysctl.d/80-unbound.conf"
+echo 'net.core.rmem_max=1048576' | sudo tee -a $SYSCTLCONF > /dev/null
+echo 'net.core.wmem_max=4194304' | sudo tee -a $SYSCTLCONF > /dev/null
 sudo sysctl --system
 ```
 
