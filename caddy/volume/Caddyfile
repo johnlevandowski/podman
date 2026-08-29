@@ -1,0 +1,36 @@
+{
+	acme_dns cloudflare {file./run/secrets/CLOUDFLARE_API_TOKEN}
+}
+
+{$LANDOMAIN}, {$TSDOMAIN} {
+	root * /srv
+	encode
+	file_server
+}
+
+*.{$LANDOMAIN}, *.{$TSDOMAIN} {
+	@cockpit host cockpit.{$LANDOMAIN} cockpit.{$TSDOMAIN}
+	handle @cockpit {
+		reverse_proxy http://host.containers.internal:9090
+	}
+
+	@immich host immich.{$LANDOMAIN} immich.{$TSDOMAIN}
+	handle @immich {
+		reverse_proxy http://host.containers.internal:2283
+	}
+
+	@pihole host pihole.{$LANDOMAIN} pihole.{$TSDOMAIN}
+	handle @pihole {
+		redir / /admin{uri}
+		reverse_proxy http://host.containers.internal:8080
+	}
+
+	@test host test.{$LANDOMAIN} test.{$TSDOMAIN}
+	handle @test {
+		respond "This is a test, proving that Caddy is running :)"
+	}
+
+	handle {
+		respond "The subdomain you attempted to navigate to is not configured."
+	}
+}
