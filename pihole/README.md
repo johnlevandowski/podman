@@ -1,9 +1,10 @@
 Pihole
 ======
 
-## Increase buffer sizes for unbound so-rcvbuf and so-sndbuf
+## Increase buffer sizes for unbound so-rcvbuf and so-sndbuf if needed
 
 ```
+sysctl net.core.rmem_max net.core.wmem_max
 sudo cp $HOME/Documents/GitHub/podman/pihole/80-unbound.conf /etc/sysctl.d/
 sudo sysctl --system
 ```
@@ -47,6 +48,7 @@ Update FTLCONF_webserver_domain environment variable in pihole.container
 ```
 mkdir -p $HOME/pihole/
 cp -r $HOME/Documents/GitHub/podman/pihole/. $HOME/pihole/
+chmod +x $HOME/pihole/adlists.sh
 cp $HOME/Documents/GitHub/podman/pihole/pihole.pod $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole.container $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole-unbound.container $HOME/.config/containers/systemd/
