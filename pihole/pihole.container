@@ -36,7 +36,6 @@ Volume=var-log-pihole:/var/log/pihole:z
 Secret=PIHOLE_WEBSERVER_API_PASSWORD
 
 [Service]
-ExecStartPost=%h/pihole/adlists.sh
 Restart=always
 
 [Install]

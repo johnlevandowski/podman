@@ -15,6 +15,7 @@ sudo sysctl --system
 ## Disable systemd-resolved stub listener if installed/active
 
 ```
+sudo ss -tunlp
 sudo mkdir /etc/systemd/resolved.conf.d
 sudo cp $HOME/Documents/GitHub/podman/pihole/99-stub-listener.conf /etc/systemd/resolved.conf.d/
 sudo systemctl restart systemd-resolved.service
@@ -50,10 +51,11 @@ Update FTLCONF_webserver_domain environment variable in pihole.container
 ```
 mkdir -p $HOME/pihole/
 cp -r $HOME/Documents/GitHub/podman/pihole/volume/. $HOME/pihole/
-chmod +x $HOME/pihole/adlists.sh
 cp $HOME/Documents/GitHub/podman/pihole/pihole.pod $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole.container $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole-unbound.container $HOME/.config/containers/systemd/
 systemctl --user daemon-reload
 systemctl --user start pihole-pod.service
+chmod +x $HOME/Documents/GitHub/podman/pihole/adlists.sh
+$HOME/Documents/GitHub/podman/pihole/adlists.sh
 ```
