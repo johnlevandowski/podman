@@ -14,7 +14,7 @@ Mount=type=tmpfs,destination=/etc/unbound,tmpfs-size=100M,tmpcopyup,tmpfs-mode=0
 # HealthStartPeriod=10s
 # HealthTimeout=30s
 
-# Volume=%h/unbound/etc-unbound:/etc/unbound/unbound.conf.d
+# Volume=%h/pihole/etc-unbound:/etc/unbound/unbound.conf.d
 
 [Service]
 Restart=always
