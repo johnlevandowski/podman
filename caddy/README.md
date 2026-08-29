@@ -30,7 +30,7 @@ Update LANDOMAIN and TSDOMAIN environment variables in caddy.container
 
 ```
 mkdir -p $HOME/caddy/
-cp -r $HOME/Documents/GitHub/podman/caddy/volume/. $HOME/caddy/
+cp -r $HOME/Documents/GitHub/podman/caddy/. $HOME/caddy/
 cp $HOME/Documents/GitHub/podman/caddy/caddy.container $HOME/.config/containers/systemd/
 systemctl --user daemon-reload
 systemctl --user start caddy.service
