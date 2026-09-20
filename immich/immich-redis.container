@@ -11,6 +11,3 @@ Exec=redis-server --loglevel warning
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=default.target

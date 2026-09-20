@@ -18,6 +18,3 @@ Mount=type=tmpfs,destination=/etc/unbound,tmpfs-size=100M,tmpcopyup,tmpfs-mode=0
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=default.target

@@ -37,6 +37,3 @@ Secret=PIHOLE_WEBSERVER_API_PASSWORD
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=default.target

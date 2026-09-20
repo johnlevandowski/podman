@@ -10,6 +10,3 @@ Volume=immich-model-cache:/cache:z
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=default.target
