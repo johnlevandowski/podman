@@ -1,0 +1,19 @@
+# FileName=pihole-doh
+[Unit]
+Description=DNS over HTTPS Container
+Requires=pihole.service
+After=pihole.service
+
+[Container]
+Pod=pihole.pod
+Image=docker.io/satishweb/doh-server:v2.3.10-alpine
+ReadOnly=true
+
+Environment=UPSTREAM_DNS_SERVER=udp:127.0.0.1:53
+Environment=DOH_HTTP_PREFIX=/dns-query
+Environment=DOH_SERVER_LISTEN=:8053
+
+Volume=%h/pihole/doh-server.conf:/server/doh-server.conf:z
+
+[Service]
+Restart=always

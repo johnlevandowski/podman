@@ -8,6 +8,7 @@ Network=pasta:--ipv4-only
 PublishPort=8080:8080/tcp
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
+PublishPort=8053:8053/tcp
 
 [Install]
 WantedBy=default.target
