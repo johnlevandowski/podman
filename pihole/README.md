@@ -51,11 +51,31 @@ Update FTLCONF_webserver_domain environment variable in pihole.container
 ```
 mkdir -p $HOME/pihole/
 cp -r $HOME/Documents/GitHub/podman/pihole/volume/. $HOME/pihole/
+(umask 000 && touch $HOME/pihole/doh-server.conf)
 cp $HOME/Documents/GitHub/podman/pihole/pihole.pod $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole.container $HOME/.config/containers/systemd/
+cp $HOME/Documents/GitHub/podman/pihole/pihole-doh.container $HOME/.config/containers/systemd/
 cp $HOME/Documents/GitHub/podman/pihole/pihole-unbound.container $HOME/.config/containers/systemd/
 systemctl --user daemon-reload
 systemctl --user start pihole-pod.service
 chmod +x $HOME/Documents/GitHub/podman/pihole/adlists.sh
 $HOME/Documents/GitHub/podman/pihole/adlists.sh
+chmod +x $HOME/Documents/GitHub/podman/pihole/whitelist.sh
+$HOME/Documents/GitHub/podman/pihole/whitelist.sh
 ```
+
+
+## DMS over HTTPS test
+
+```
+curl -I --doh-url https://doh.geekoma5.lan.johnl.dev/dns-query https://johnl.dev
+```
+
+
+## Setup DNS over HTTPS in Firefox
+
+Settings > Privacy and security > DNS over HTTPS > Advanced settings > Custom > Provider = https://doh.geekoma5.lan.johnl.dev/dns-query  
+
+### Allow private IP for DoH
+about:config > network.trr.allow-rfc1918 = TRUE  
+add pihole-doh server private IP address in public cloudflare dns server so dns lookup finds IP address for doh server  
