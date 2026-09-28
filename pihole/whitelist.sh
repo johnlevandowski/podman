@@ -20,3 +20,6 @@ podman exec -it systemd-pihole pihole allow-regex "^images1\.cmp\.optimizely\.co
 
 # common-logger.cdn.web.vanguard.com
 # smetrics.vanguard.com
+
+# used for windowscentral.com blacking accress to website without
+# (\.|^)html-load\.com$

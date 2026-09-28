@@ -70,12 +70,3 @@ $HOME/Documents/GitHub/podman/pihole/whitelist.sh
 ```
 curl -I --doh-url https://doh.geekoma5.lan.johnl.dev/dns-query https://johnl.dev
 ```
-
-
-## Setup DNS over HTTPS in Firefox
-
-Settings > Privacy and security > DNS over HTTPS > Advanced settings > Custom > Provider = https://doh.geekoma5.lan.johnl.dev/dns-query  
-
-### Allow private IP for DoH
-about:config > network.trr.allow-rfc1918 = TRUE  
-add pihole-doh server private IP address in public cloudflare dns server so dns lookup finds IP address for doh server  
