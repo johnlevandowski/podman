@@ -1,6 +1,17 @@
 Caddy Server
 ============
 
+## Increase buffer sizes for caddy if needed
+
+```
+sysctl net.core.rmem_max net.core.wmem_max
+SYSCTLCONF="/etc/sysctl.d/80-buffers.conf"
+echo 'net.core.rmem_max=7340032' | sudo tee -a $SYSCTLCONF > /dev/null
+echo 'net.core.wmem_max=7340032' | sudo tee -a $SYSCTLCONF > /dev/null
+sudo sysctl --system
+```
+
+
 ## Firewall
 
 ```

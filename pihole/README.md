@@ -5,7 +5,7 @@ Pihole
 
 ```
 sysctl net.core.rmem_max net.core.wmem_max
-SYSCTLCONF="/etc/sysctl.d/80-unbound.conf"
+SYSCTLCONF="/etc/sysctl.d/80-buffers.conf"
 echo 'net.core.rmem_max=1048576' | sudo tee -a $SYSCTLCONF > /dev/null
 echo 'net.core.wmem_max=4194304' | sudo tee -a $SYSCTLCONF > /dev/null
 sudo sysctl --system
@@ -65,7 +65,7 @@ $HOME/Documents/GitHub/podman/pihole/whitelist.sh
 ```
 
 
-## DMS over HTTPS test
+## DNS over HTTPS test
 
 ```
 curl -I --doh-url https://doh.geekoma5.lan.johnl.dev/dns-query https://johnl.dev
