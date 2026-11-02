@@ -1,12 +1,19 @@
 Immich
 ======
 
-
-## Create backups folder in samba share for immich.container
+## Create immich folder in samba share for immich.container
 
 ```
-sudo mkdir -p /share/lan/immich
-sudo chown -R 1001:1001 /share/lan
+mkdir -p /share/lan/immich
+sudo chown -R 1001:1001 /share/lan/immich
+```
+
+
+## Access for john-podman user to external library for immich.container
+
+```
+sudo setfacl -R -m u:john-podman:rwX /share/Pictures
+sudo setfacl -R -d -m u:john-podman:rwX /share/Pictures
 ```
 
 

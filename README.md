@@ -5,6 +5,7 @@ Podman
 
 ```
 sudo dnf install \
+crun \
 podman \
 systemd-container
 ```

@@ -6,7 +6,7 @@ After=immich-redis.service immich-database.service
 
 [Container]
 Pod=immich.pod
-Image=ghcr.io/immich-app/immich-server:v3.1.0
+Image=ghcr.io/immich-app/immich-server:v3.3.5
 SecurityLabelDisable=true
 
 Environment=TZ=US/Mountain

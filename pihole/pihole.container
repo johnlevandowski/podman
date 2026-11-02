@@ -6,13 +6,9 @@ After=pihole-unbound.service
 
 [Container]
 Pod=pihole.pod
-Image=ghcr.io/pi-hole/pihole:2026.07.2
+Image=ghcr.io/pi-hole/pihole:2026.10.1
 
 Environment=TZ=US/Mountain
-Environment=FTLCONF_dhcp_start=192.168.0.201
-Environment=FTLCONF_dhcp_end=192.168.0.254
-Environment=FTLCONF_dhcp_router=192.168.0.1
-Environment=FTLCONF_dhcp_leaseTime=24h
 Environment=FTLCONF_dns_domain_name=lan.johnl.dev
 Environment=FTLCONF_dns_domainNeeded=true
 Environment=FTLCONF_dns_expandHosts=true

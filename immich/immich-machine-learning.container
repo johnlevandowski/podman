@@ -4,7 +4,7 @@ Description=Immich machine learning
 
 [Container]
 Pod=immich.pod
-Image=ghcr.io/immich-app/immich-machine-learning:v3.1.0
+Image=ghcr.io/immich-app/immich-machine-learning:v3.3.5
 
 Volume=immich-model-cache:/cache:z
 

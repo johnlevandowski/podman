@@ -4,7 +4,7 @@ Description=Unbound DNS Container
 
 [Container]
 Pod=pihole.pod
-Image=ghcr.io/johnlevandowski/unbound:3.24.1-1.25.2-r0
+Image=ghcr.io/johnlevandowski/unbound:3.24.3-1.25.2-r2
 ReadOnly=true
 Mount=type=tmpfs,destination=/etc/unbound,tmpfs-size=100M,tmpcopyup,tmpfs-mode=0755,U=true
 

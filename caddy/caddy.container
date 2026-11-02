@@ -5,7 +5,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Container]
-Image=ghcr.io/johnlevandowski/caddy-cloudflare:2.11.4
+Image=ghcr.io/johnlevandowski/caddy-cloudflare:2.11.7
 HostName=caddy
 ReadOnly=true
 
