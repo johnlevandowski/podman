@@ -1,5 +1,8 @@
 {
 	acme_dns cloudflare {file./run/secrets/CLOUDFLARE_API_TOKEN}
+	log default {
+		level ERROR
+	}
 }
 
 {$LANDOMAIN}, {$TSDOMAIN} {
@@ -12,6 +15,11 @@
 	@cockpit host cockpit.{$LANDOMAIN} cockpit.{$TSDOMAIN}
 	handle @cockpit {
 		reverse_proxy http://host.containers.internal:9090
+	}
+
+	@couchdb host couchdb.{$LANDOMAIN} couchdb.{$TSDOMAIN}
+	handle @couchdb {
+		reverse_proxy http://host.containers.internal:5984
 	}
 
 	@doh host doh.{$LANDOMAIN} doh.{$TSDOMAIN}
@@ -28,6 +36,11 @@
 	handle @pihole {
 		redir / /admin{uri}
 		reverse_proxy http://host.containers.internal:8080
+	}
+
+	@uptime-kuma host uptime-kuma.{$LANDOMAIN} uptime-kuma.{$TSDOMAIN}
+	handle @uptime-kuma {
+		reverse_proxy http://host.containers.internal:3001
 	}
 
 	@test host test.{$LANDOMAIN} test.{$TSDOMAIN}

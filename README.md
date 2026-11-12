@@ -14,6 +14,7 @@ systemd-container
 ## Rootless privileged port permissions
 
 ```
+sysctl net.ipv4.ip_unprivileged_port_start
 echo 'net.ipv4.ip_unprivileged_port_start=53' | sudo tee -a /etc/sysctl.d/99-ip-unpriv-port.conf > /dev/null
 sudo sysctl --system
 ```
@@ -41,7 +42,7 @@ sudo machinectl shell john-podman@
 ```
 git clone https://github.com/johnlevandowski/podman $HOME/Documents/GitHub/podman
 mkdir -p $HOME/.config/containers/systemd/
-podman run --name hello hello
+podman run --name hello quay.io/podman/hello
 podman container rm hello
 podman image rm hello
 ```
